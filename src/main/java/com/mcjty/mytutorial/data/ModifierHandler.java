@@ -20,10 +20,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class ModifierHandler {
     @SubscribeEvent
     public static void onMobSlay(LivingDeathEvent event){
-        if(!(event.getSource().getEntity() instanceof PlayerEntity)){
-            return;
-        }
-        // DataParameter<EntityHealth> health = new DataParameter<EntityHealth>(1, );
+//        if(!(event.getSource().getEntity() instanceof PlayerEntity)){
+//            System.out.println("NOT REGISTER PVE EVENT");
+//            return;
+//        }
         if(event.getEntity() instanceof ZombieEntity ){
             ZombieEntity.createMobAttributes()
                     .add(Attributes.ATTACK_DAMAGE, (Attributes.ATTACK_DAMAGE.getDefaultValue() * 100D))
