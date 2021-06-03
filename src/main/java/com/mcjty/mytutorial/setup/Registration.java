@@ -1,6 +1,6 @@
 package com.mcjty.mytutorial.setup;
 
-import com.mcjty.mytutorial.blocks.*;
+
 import com.mcjty.mytutorial.data.ModifierHandler;
 import com.mcjty.mytutorial.entities.WeirdMobEntity;
 import com.mcjty.mytutorial.items.Sword;

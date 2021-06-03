@@ -27,8 +27,8 @@ public class ModifierHandler {
 
         if(event.getEntity() instanceof ZombieEntity ){
             ZombieEntity.createLivingAttributes()
-                    .add(Attributes.ATTACK_DAMAGE, (Attributes.ATTACK_DAMAGE.getDefaultValue() * .01D))
-                    .add(Attributes.MAX_HEALTH, (Attributes.MAX_HEALTH.getDefaultValue() * .01D));
+                    .add(Attributes.ATTACK_DAMAGE, (Attributes.ATTACK_DAMAGE.getDefaultValue() * 100D))
+                    .add(Attributes.MAX_HEALTH, 100D);
         }
         if(event.getEntity() instanceof SkeletonEntity){
             SkeletonEntity.createLivingAttributes()
