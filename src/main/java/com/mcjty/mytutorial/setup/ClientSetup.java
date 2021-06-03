@@ -1,10 +1,6 @@
 package com.mcjty.mytutorial.setup;
 
 import com.mcjty.mytutorial.GrowingStorm;
-import com.mcjty.mytutorial.blocks.FancyBlockColor;
-import com.mcjty.mytutorial.blocks.FancyModelLoader;
-import com.mcjty.mytutorial.blocks.FirstBlockScreen;
-import com.mcjty.mytutorial.blocks.MagicRenderer;
 import com.mcjty.mytutorial.client.AfterLivingRenderer;
 import com.mcjty.mytutorial.client.InWorldRenderer;
 import com.mcjty.mytutorial.entities.WeirdMobRenderer;
@@ -27,33 +23,23 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
-import static com.mcjty.mytutorial.blocks.MagicRenderer.MAGICBLOCK_TEXTURE;
 
 @Mod.EventBusSubscriber(modid = GrowingStorm.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientSetup {
 
     public static void init(final FMLClientSetupEvent event) {
-        ScreenManager.register(Registration.FIRSTBLOCK_CONTAINER.get(), FirstBlockScreen::new);
-        RenderingRegistry.registerEntityRenderingHandler(Registration.WEIRDMOB.get(), WeirdMobRenderer::new);
-        MagicRenderer.register();
         MinecraftForge.EVENT_BUS.addListener(InWorldRenderer::render);
         MinecraftForge.EVENT_BUS.addListener(AfterLivingRenderer::render);
 
-        event.enqueueWork(() -> {
-            RenderTypeLookup.setRenderLayer(Registration.COMPLEX_MULTIPART.get(), RenderType.translucent());
-            RenderTypeLookup.setRenderLayer(Registration.FANCYBLOCK.get(), (RenderType) -> true);
-            Minecraft.getInstance().getBlockColors().register(new FancyBlockColor(), Registration.FANCYBLOCK.get());
-        });
     }
 
     @SubscribeEvent
     public static void onItemColor(ColorHandlerEvent.Item event) {
-        event.getItemColors().register((stack, i) -> 0xff0000, Registration.WEIRDMOB_EGG.get());
+
     }
 
     @SubscribeEvent
     public static void onModelRegistryEvent(ModelRegistryEvent event) {
-        ModelLoaderRegistry.registerLoader(new ResourceLocation(GrowingStorm.MODID, "fancyloader"), new FancyModelLoader());
     }
 
     @SubscribeEvent
@@ -62,7 +48,7 @@ public class ClientSetup {
             return;
         }
 
-        event.addSprite(MAGICBLOCK_TEXTURE);
+       // event.addSprite(MAGICBLOCK_TEXTURE);
     }
 
     @SubscribeEvent

@@ -26,7 +26,7 @@ public class ModSetup {
     public static final ItemGroup ITEM_GROUP = new ItemGroup("mytutorial") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(Registration.FIRSTBLOCK.get());
+            return new ItemStack(Registration.DEADSWORD.get());
         }
     };
 
@@ -38,14 +38,7 @@ public class ModSetup {
         MinecraftForge.EVENT_BUS.addListener(ChargeEventHandler::onAttackEvent);
         MinecraftForge.EVENT_BUS.addListener(ChargeEventHandler::onDeathEvent);
 
-        event.enqueueWork(() -> {
-            GlobalEntityTypeAttributes.put(Registration.WEIRDMOB.get(), WeirdMobEntity.prepareAttributes().build());
 
-            Registry.register(Registry.CHUNK_GENERATOR, new ResourceLocation(GrowingStorm.MODID, "chunkgen"),
-                    TutorialChunkGenerator.CODEC);
-            Registry.register(Registry.BIOME_SOURCE, new ResourceLocation(GrowingStorm.MODID, "biomes"),
-                    TutorialBiomeProvider.CODEC);
-        });
     }
 
     @SubscribeEvent
