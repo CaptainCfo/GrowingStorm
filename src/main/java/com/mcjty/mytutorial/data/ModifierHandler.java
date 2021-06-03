@@ -24,7 +24,7 @@ public class ModifierHandler {
 //            System.out.println("NOT REGISTER PVE EVENT");
 //            return;
 //        }
-        if(event.getEntity() instanceof ZombieEntity ){
+        if(event.getSource().getEntity() instanceof ZombieEntity ){
             ZombieEntity.createMobAttributes()
                     .add(Attributes.ATTACK_DAMAGE, (Attributes.ATTACK_DAMAGE.getDefaultValue() * 100D))
                     .add(Attributes.MAX_HEALTH, 100D);
